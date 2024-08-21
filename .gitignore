@@ -1,5 +1,10 @@
+# environment file
 .env
-combined.log
-error.log
+
+# npm dependencies
 node_modules/
+
+# Logs
+logs/
+
 
