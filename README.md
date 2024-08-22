@@ -16,8 +16,11 @@ pm2 start "npm run start" --name twilio-calling-api
 ```
 
 
-### 
+### api testing using curl
 
- ```sh
- curl -X POST http://localhost:9000/call -H "Content-Type: application/json" -d '{"to": "+917028571783"}'
- ```
+```sh
+ curl -X POST http://localhost:9000/call \
+-H "Content-Type: application/json" \
+-H "x-api-key: your_secure_api_key" \
+-d '{"to": "+1234567890"}'
+```
