@@ -15,8 +15,11 @@ const storeData = (req, res) => {
         const data = req.body;
 
         // Log the data to the log file and console
-        logger.info('Data received:', data.subject);
-        console.log('Data received:', data.subject);
+        // logger.info('Data received:', data.subject);
+        // console.log('Data received:', data.subject);
+
+        logger.info('Data received:', { subject: data.subject, message: data.message });
+        console.log('Data received:', { subject: data.subject, message: data.message });
 
         res.status(200).send('Data logged successfully');
     } catch (error) {
