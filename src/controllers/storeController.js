@@ -1,23 +1,10 @@
-// const logger = require('../config/logger');
-
-// const storeData = (req, res) => {
-    
-// };
-
-// module.exports = {
-//     storeData
-// };
-
 const logger = require('../config/logger');
 
 const storeData = (req, res) => {
     try {
-        const data = req.body;
+        const data = req.body; // req.body will contain the parsed data
 
         // Log the data to the log file and console
-        // logger.info('Data received:', data.subject);
-        // console.log('Data received:', data.subject);
-
         logger.info('Data received:', { subject: data.subject, message: data.message });
         console.log('Data received:', { subject: data.subject, message: data.message });
 
