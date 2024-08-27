@@ -3,10 +3,11 @@ const axios = require('axios');
 const logger = require('../config/logger'); 
 
 const apiKey = process.env.API_KEY;
+const callApiBaseUrl = process.env.CALL_API_BASE_URL;
 
 const makeCall = async (to) => {
     try {
-        const response = await axios.post('https://make-call.dft-yui.com/call', {
+        const response = await axios.post(`${callApiBaseUrl}/call`, {
             "to": to
             // Add any additional data you need to send in the request body
         }, {
