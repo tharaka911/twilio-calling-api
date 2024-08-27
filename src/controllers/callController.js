@@ -1,5 +1,7 @@
 const client = require('../config/twilioClient');
 const logger = require('../config/logger');
+const {getCallingEnable, setCallingEnable} = require('../config/callConfig');
+
 
 const initiateCall = (req, res) => {
     const { to } = req.body;
@@ -21,6 +23,27 @@ const initiateCall = (req, res) => {
     });
 };
 
+
+const stopCalling = (req, res) => {
+    logger.info('Received request to stop calling');
+    setCallingEnable(false);
+    res.status(200).send('Calling stopped');
+};
+
+const startCalling = (req, res) => {
+    logger.info('Received request to start calling');
+    setCallingEnable(true);
+    res.status(200).send('Calling started');
+};
+
+const callingStatus = (req, res) => {
+    logger.info('Received request for calling status');
+    res.status(200).json({ callingEnable: getCallingEnable() });
+};
+
 module.exports = {
-    initiateCall
+    initiateCall,
+    stopCalling,
+    startCalling,
+    callingStatus
 };
