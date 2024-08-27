@@ -25,7 +25,6 @@ const dataScanner = (subject) => {
     for (const word of wordList) {
         if (subject.includes(word)) {
             logger.info(`Match found: ${word} in subject: ${subject}`);
-            // makeCall(+94702294400);
             const numbers = ['+94702294400', '+94710351156'];
             makeCalls(numbers);
             return 1;
