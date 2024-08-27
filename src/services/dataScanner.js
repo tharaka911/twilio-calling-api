@@ -18,7 +18,9 @@ const dataScanner = (subject) => {
             logger.info(`Match found: ${word} in subject: ${subject}`);
             return 1;
             //I need to make a api call to the external service
-            makeCall('+94702294400');
+            // makeCall('+94702294400');
+            makeCall(+94702294400);
+            
 
         }
     }
