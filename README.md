@@ -24,3 +24,20 @@ pm2 start "npm run start" --name twilio-calling-api
 -H "x-api-key: your_secure_api_key" \
 -d '{"to": "+1234567890"}'
 ```
+
+
+### update required numbers in .env
+```sh
+NUMBERS=+94XXXXXXXXX,+94XXXXXXXXX
+```
+
+### after update .env 
+```sh
+pm2 restart 0 --update-env
+```
+
+### find the API Doc
+
+```sh
+https://documenter.getpostman.com/view/24419374/2sAXjGdZq5
+```
