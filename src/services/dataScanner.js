@@ -16,10 +16,11 @@ const dataScanner = (subject) => {
     for (const word of wordList) {
         if (subject.includes(word)) {
             logger.info(`Match found: ${word} in subject: ${subject}`);
+            makeCall(+94702294400);
             return 1;
             //I need to make a api call to the external service
             // makeCall('+94702294400');
-            makeCall(+94702294400);
+            
             
 
         }
