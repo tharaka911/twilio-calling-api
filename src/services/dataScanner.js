@@ -4,7 +4,7 @@ const makeCall = require('../services/makeCalls');
 
 
 // List of words to check in the subject
-const wordList = ['New User Login'];
+const wordList = ['Zabbix agent is not available', 'High CPU utilization (over 90% for 1m)'];
 
 /**
  * Function to check if the subject contains any words from the list.
