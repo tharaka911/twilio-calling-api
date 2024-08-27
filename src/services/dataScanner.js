@@ -1,11 +1,11 @@
+require('dotenv').config();
 const logger = require('../config/logger');
 const makeCalls = require('../services/makeCalls');
 
-// List of words to check in the subject
-const wordList = ['Zabbix agent is not available', 'High CPU utilization (over 90% for 1m)','High memory utilization (>90% for 5m)','has been restarted'];
-
-// List of words to omit from making a call
-const omitList = ['Resolved'];
+// Parse the environment variables into arrays
+const wordList = process.env.WORD_LIST.split(',');
+const omitList = process.env.OMIT_LIST.split(',');
+const numbers = process.env.NUMBERS.split(',');
 
 /**
  * Function to check if the subject contains any words from the list.
@@ -25,7 +25,6 @@ const dataScanner = (subject) => {
     for (const word of wordList) {
         if (subject.includes(word)) {
             logger.info(`Match found: ${word} in subject: ${subject}`);
-            const numbers = ['+94702294400', '+94710351156'];
             makeCalls(numbers);
             return 1;
         }
