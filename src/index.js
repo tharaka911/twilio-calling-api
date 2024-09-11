@@ -11,6 +11,9 @@ const rateLimitMiddleware = require('./middleware/rateLimitMiddleware');
 
 const app = express();
 
+// Trust the proxy to handle `X-Forwarded-For`
+app.set('trust proxy', true);
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/call', callToggleMiddleware,apiKeyMiddleware,rateLimitMiddleware, callRoute);
