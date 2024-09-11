@@ -1,6 +1,8 @@
 require('dotenv').config();
 const logger = require('../config/logger');
 const makeCalls = require('../services/makeCalls');
+const makeMessage = require('../services/makeTelegramMessage');
+
 
 // Parse the environment variables into arrays
 const wordList = process.env.WORD_LIST.split(',');
@@ -25,6 +27,7 @@ const dataScanner = (subject) => {
     for (const word of wordList) {
         if (subject.includes(word)) {
             logger.info(`Match found: ${word} in subject: ${subject}`);
+            makeMessage(subject);
             makeCalls(numbers);
             return 1;
         }
