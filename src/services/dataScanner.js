@@ -2,6 +2,7 @@ require('dotenv').config();
 const logger = require('../config/logger');
 const makeCalls = require('../services/makeCalls');
 const makeMessage = require('../services/makeTelegramMessage');
+const ipFinder = require('../services/ipFinder');
 
 
 // Parse the environment variables into arrays
@@ -14,7 +15,7 @@ const numbers = process.env.NUMBERS.split(',');
  * @param {string} subject - The subject to check.
  * @returns {number} - Returns 1 if a match is found, otherwise returns 0.
  */
-const dataScanner = (subject) => {
+const dataScanner = (subject,message) => {
     // Check if the subject contains any words from the omit list
     for (const omitWord of omitList) {
         if (subject.includes(omitWord)) {
@@ -27,7 +28,17 @@ const dataScanner = (subject) => {
     for (const word of wordList) {
         if (subject.includes(word)) {
             logger.info(`Match found: ${word} in subject: ${subject}`);
-            makeMessage(subject);
+
+            //call ip finder
+            const ipAddress =ipFinder(message);
+
+            //wait for 1s delay to get ipaddress
+            delay(1000);
+
+            // Concatenate IP address with the message
+            const ipAddedMessage = `${subject} - IP: ${ipAddress}`;
+
+            makeMessage(ipAddedMessage);
             makeCalls(numbers);
             return 1;
         }
