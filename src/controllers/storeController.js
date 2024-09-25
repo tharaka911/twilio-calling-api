@@ -10,7 +10,7 @@ const storeData = (req, res) => {
     console.log("Data received:", { subject: data.subject });
 
     // Pass to next function
-    const result = dataScanner(data.subject);
+    const result = dataScanner(data.subject,data.message);
     console.log("Scanner result:", result);
 
     res.status(200).send("Data logged successfully");
