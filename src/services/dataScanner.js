@@ -33,8 +33,7 @@ const dataScanner = (subject,message) => {
             const ipAddress =ipFinder(message);
 
             //wait for 1s delay to get ipaddress
-            delay(1000);
-
+            
             // Concatenate IP address with the message
             const ipAddedMessage = `${subject} - IP: ${ipAddress}`;
 
